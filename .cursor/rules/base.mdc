@@ -1,0 +1,60 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Cursor Rule Configuration
+
+# プロジェクトの基本設定
+project:
+  name: "countup_dict_mcp"
+  language: "ruby"
+  version: "1.0.0"
+  dependencies:
+    - name: "model-context-protocol-rb"
+      version: "0.3.1"
+      source: "https://github.com/dickdavis/model-context-protocol-rb"
+
+# エディタ設定
+editor:
+  tab_size: 2
+  insert_spaces: true
+  trim_trailing_whitespace: true
+  insert_final_newline: true
+
+# ファイルパターン
+patterns:
+  include:
+    - "**/*.rb"
+    - "**/*.csv"
+    - "**/*.txt"
+  exclude:
+    - "**/node_modules/**"
+    - "**/.git/**"
+    - "**/tmp/**"
+
+# コードスタイル
+style:
+  ruby:
+    line_length: 120
+    double_quotes: true
+    trailing_comma: "always"
+
+# Model Context Protocol設定
+mcp:
+  server:
+    port: 3000
+    host: "localhost"
+  resources:
+    base_path: "resource://"
+  prompts:
+    base_path: "prompt://"
+
+# 通知設定
+notifications:
+  on_load:
+    message: "base.mdc ファイルを読み込みました。"
+    type: "info"
+    show_in_chat: true 
+
+
