@@ -10,17 +10,14 @@ end
 
 class CheckWordPrompt < ModelContextProtocol::Server::Prompt
   with_metadata do
-    {
-      name: "Check Word Prompt",
-      description: "Check the word",
-      arguments: [
-        {
-          name: "word",
-          description: "The word you want to check",
-          required: true
-        }
-      ]
-    }
+    name "Check Word Prompt"
+    description "Check the word"
+  end
+
+  with_argument do
+    name "word"
+    description "The word you want to check"
+    required true
   end
 
   def call
@@ -47,17 +44,17 @@ end
 
 class ToolIncrementLookupCount < ModelContextProtocol::Server::Tool
   with_metadata do
-    {
-      name: "increment-lookup-count", # tool name must be kebab-case
-      description: "Increment the lookup count of the word",
-      inputSchema: {
+    name "increment-lookup-count" # tool name must be kebab-case
+    description "Increment the lookup count of the word"
+    input_schema do
+      {
         type: "object",
         properties: {
           word: { type: "string", description: "The word you want to increment the lookup count of" }
         },
         required: ["word"]
       }
-    }
+    end
   end
 
   def call
@@ -77,12 +74,10 @@ end
 
 class LookupCountResource < ModelContextProtocol::Server::Resource
   with_metadata do
-    {
-      name: "Lookup Count Resource",
-      description: "The count of the word you looked up",
-      mime_type: "text/plain",
-      uri: "resource://lookup-count-data"
-    }
+    name "Lookup Count Resource"
+    description "The count of the word you looked up"
+    mime_type "text/plain"
+    uri "resource://lookup-count-data"
   end
 
   def call
